@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Todo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>List Of Todos</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/todos/new}" class="btn btn-primary btn_sm mb-3" >Add Student</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered ">
+        <thead class="table-dark">
+        <tr>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todos:${todos}">
+            <td th:text = "${todos.description}"> </td>
+            <td th:text = "${todos.date}"> </td>
+            <td >
+                <a th:href="@{todos/edit/{id}(id=${todos.id})}" class="btn btn-primary">Update</a>
+                <a th:href = "@{/todos/{id}(id=${todos.id})}"
+                   class = "btn btn-danger">Delete</a>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>
